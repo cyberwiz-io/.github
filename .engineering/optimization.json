@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "workflows": {
+    ".github/workflows/engineering-policy.yml": {
+      "mode": "validation",
+      "required_jobs": [
+        "policy"
+      ],
+      "max_timeout_minutes": 5,
+      "required_commands": {
+        "policy": [
+          "python .engineering/check.py"
+        ]
+      }
+    }
+  },
+  "retry": {
+    "persistent_infrastructure": 0
+  },
+  "verification_key": [
+    "commit",
+    "inputs",
+    "toolchain",
+    "environment",
+    "check_configuration"
+  ],
+  "exceptions": [
+    "Existing workflows not listed here retain their current acceptance. Enrollment is not full CI optimization."
+  ],
+  "enforcement": "editable PR workflow; independent trusted enforcement pending"
+}
